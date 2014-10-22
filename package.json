@@ -1,0 +1,31 @@
+{
+  "name": "scrape-that-listing",
+  "version": "1.0.0",
+  "description": "Simple web scraper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scraper",
+    "browserify",
+    "node"
+  ],
+  "author": "Alvydas Poskevicius",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^6.1.0",
+    "cheerio": "^0.17.0",
+    "express": "^4.9.7",
+    "extend": "^2.0.0",
+    "fs": "0.0.2",
+    "gulp": "^3.8.8",
+    "nedb": "^0.11.1",
+    "node-notifier": "^4.0.2",
+    "object-hash": "^0.3.0",
+    "request": "^2.45.0"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1"
+  }
+}
