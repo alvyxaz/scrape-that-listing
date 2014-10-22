@@ -6,6 +6,7 @@ var UpdateTaskRunner = function () {
     var scrappers = [];
 
     self.start = function () {
+        update();
         setInterval(update, 60000);
     };
 

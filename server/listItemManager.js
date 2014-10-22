@@ -3,7 +3,8 @@ var Datastore   = require('nedb'),
     db          = new Datastore({ autoload: true }), // filename: 'data/list-items.db'
     request     = require('request');
     notifier    = require('node-notifier'),
-    path        = require('path');
+    path        = require('path'),
+    open        = require('open');
 
 // Registering index key
 db.ensureIndex({fieldName: 'key', unique: true});
@@ -34,17 +35,23 @@ var ListItemManager = function () {
 
     function sendNotification(listItem) {
         notifier.notify({
-            title: listItem.values.title + "(" +listItem.values.price + ")",
+            title: "[" +listItem.values.price.trim() + "]" + listItem.values.title,
             message: listItem.values.details,
             icon: path.join(__dirname + "/../data/thumbnails/", listItem.key + '.png'),
             sound: false, // Only Notification Center or Windows Toasters
             wait: true // wait with callback until user action is taken on notification
         }, function (err, response) {
-//            console.log(err);
-//            console.log(response);
+            if (response.trim() === "Activated") {
+                openItem(listItem);
+            }
+
             // response is response from notification
         });
     }
+
+    function openItem(listItem) {
+        open(listItem.values.url);
+    };
 
     function downloadThumbnail(uri, filename, callback){
         request.head(uri, function(err, res, body){
