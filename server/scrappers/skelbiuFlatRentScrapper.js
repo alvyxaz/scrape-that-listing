@@ -22,7 +22,7 @@ var SkelbiuFlatRentScrapper = function () {
                         address: $element.find('.adsTextReview').text(),
                         details: $element.find('.adsTextMoreDetails').text(),
                         price: $element.find('.adsPrice').text().trim(),
-                        thumbnail: $element.find('.adsDetails').next().find('img').attr('src'),
+                        thumbnail: $element.find('.adsImage').find('img').attr('src'),
                         url : domain + $element.find('h3 a').attr('href')
                     };
 
